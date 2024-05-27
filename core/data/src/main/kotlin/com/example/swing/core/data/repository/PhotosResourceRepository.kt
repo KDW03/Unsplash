@@ -5,7 +5,7 @@ import com.example.swing.core.model.Photo
 import kotlinx.coroutines.flow.Flow
 
 interface PhotosResourceRepository {
-    fun getPhotosByQuery(query: String, page: Int, perPage: Int): Flow<PagingData<Photo>>
-    fun getPhotos(page: Int, perPage: Int): Flow<PagingData<Photo>>
+    fun getPhotosByQuery(query: String,): Flow<PagingData<Photo>>
+    fun getPhotos(): Flow<PagingData<Photo>>
     suspend fun getPhotoById(id: String): Photo
 }
