@@ -16,7 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.swing.core.model.Photo
@@ -38,7 +37,8 @@ internal fun GalleryRoute(
         pagingFeeds = pagingFeeds,
         onFeedClick = onPhotoClick,
         orientation = orientation,
-        isScroll = isScroll
+        isScroll = isScroll,
+        onLikeClick = viewModel::updatePhotoLiked
     )
 }
 
@@ -48,7 +48,8 @@ internal fun GalleryScreen(
     pagingFeeds: LazyPagingItems<Photo>,
     onFeedClick: (String) -> Unit,
     orientation: Int,
-    isScroll: MutableState<Boolean>
+    isScroll: MutableState<Boolean>,
+    onLikeClick: (String, Boolean) -> Unit,
 ) {
     Box(
         modifier
@@ -77,7 +78,8 @@ internal fun GalleryScreen(
                         photo = photo,
                         onPhotoClick = onFeedClick,
                         screenWidthDp = screenWidthDp,
-                        modifier = Modifier.padding(8.dp)
+                        modifier = Modifier.padding(8.dp),
+                        onLikeClick = onLikeClick
                     )
                 }
             }

@@ -1,8 +1,11 @@
 package com.example.swing.core.data.repository
 
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import androidx.paging.map
+import com.example.swing.core.common.di.ApplicationScope
 import com.example.swing.core.model.Photo
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
@@ -18,23 +21,26 @@ import javax.inject.Inject
 class CompositePhotosRepository @Inject constructor(
     val photosRepository: PhotosRepository,
     val userDataRepository: UserDataRepository,
+    @ApplicationScope val scope: CoroutineScope,
 ) : UserPhotosRepository {
+
+    val userData = userDataRepository.userData
     override fun getAllPhotos(): Flow<PagingData<Photo>> =
-        photosRepository.getPhotos().combine(
-            userDataRepository.userData
+        photosRepository.getPhotos().cachedIn(scope = scope).combine(
+            userData
         ) { photos, userData ->
             photos.map { photo -> photo.copy(isLiked = photo.id in userData.likedPhotosIds) }
         }
 
     override fun getPhotosByQuery(query: String): Flow<PagingData<Photo>> =
-        photosRepository.getPhotosByQuery(query).combine(
-            userDataRepository.userData
+        photosRepository.getPhotosByQuery(query).cachedIn(scope= scope).combine(
+            userData
         ) { photos, userData ->
             photos.map { photo -> photo.copy(isLiked = photo.id in userData.likedPhotosIds) }
         }
 
     override fun getAllLikePhotos(): Flow<List<Photo>> =
-        userDataRepository.userData.map { it.likedPhotosIds }
+        userData.map { it.likedPhotosIds }
             .distinctUntilChanged()
             .flatMapLatest { likedPhotosIds ->
                 if (likedPhotosIds.isEmpty()) {

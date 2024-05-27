@@ -2,6 +2,9 @@ package com.example.swing.ui.core.icon
 
 import androidx.annotation.DrawableRes
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.rounded.ArrowBack
@@ -16,6 +19,8 @@ object SwIcons {
     val Search = ImageVectorIcon(Icons.Outlined.Search)
     val ArrowBack = ImageVectorIcon(Icons.Rounded.ArrowBack)
     val Clear = ImageVectorIcon(Icons.Rounded.Clear)
+    val like = ImageVectorIcon(Icons.Default.Favorite)
+    val unLike = ImageVectorIcon(Icons.Default.FavoriteBorder)
 
     val Palette = DrawableResourceIcon(R.drawable.ic_palette)
     val DarkMode = DrawableResourceIcon(R.drawable.ic_dark_mode)
