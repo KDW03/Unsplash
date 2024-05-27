@@ -6,12 +6,9 @@ plugins {
 
 android {
     namespace = "com.example.swing"
-    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.swing"
-        minSdk = 24
-        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -21,28 +18,6 @@ android {
         }
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -51,8 +26,15 @@ android {
 }
 
 dependencies {
-    androidTestImplementation(libs.androidx.navigation.testing)
-    androidTestImplementation(libs.accompanist.testharness)
+    implementation(project(":feature:gallery"))
+    implementation(project(":feature:favorite"))
+    implementation(project(":feature:settings"))
+    implementation(project(":feature:search"))
+
+    implementation(project(":core:ui"))
+    implementation(project(":core:data"))
+    implementation(project(":core:model"))
+    implementation(project(":core:common"))
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.appcompat)
@@ -68,8 +50,4 @@ dependencies {
     implementation(libs.androidx.profileinstaller)
     implementation(libs.kotlinx.coroutines.guava)
     implementation(libs.coil.kt)
-
-    testImplementation(libs.androidx.navigation.testing)
-    testImplementation(libs.accompanist.testharness)
-    kaptTest(libs.hilt.compiler)
 }
