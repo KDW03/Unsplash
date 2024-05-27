@@ -8,6 +8,13 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonNames
 
 
+data class NetworkPagingModel(
+    val currentPage: Int,
+    val nextPage: Int?,
+    val prevPage: Int?,
+    val photoList: List<NetworkPhoto>,
+)
+
 @Serializable
 data class UnsplashNetworkResponse(
     @JsonNames("total") val total: Int,

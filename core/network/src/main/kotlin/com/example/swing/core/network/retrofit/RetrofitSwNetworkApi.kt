@@ -2,6 +2,7 @@ package com.example.swing.core.network.retrofit
 
 import com.example.swing.core.network.dto.NetworkPhoto
 import com.example.swing.core.network.dto.UnsplashNetworkResponse
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Path
@@ -14,13 +15,13 @@ interface RetrofitSwNetworkApi {
         @Query("query") query: String,
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
-    ): UnsplashNetworkResponse
+    ): Response<UnsplashNetworkResponse>
 
     @GET("photos")
     suspend fun getPhotos(
         @Query("page") page: Int = 1,
         @Query("per_page") perPage: Int = 30
-    ): UnsplashNetworkResponse
+    ): Response<List<NetworkPhoto>>
 
     @GET("photos/{id}")
     suspend fun getPhoto(@Path("id") photoId: String): NetworkPhoto

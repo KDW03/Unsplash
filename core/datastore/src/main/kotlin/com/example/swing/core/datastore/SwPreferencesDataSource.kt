@@ -16,7 +16,7 @@ class SwPreferencesDataSource @Inject constructor(
     val userData = userPreferences.data
         .map {
             UserData(
-                likedPhotosIds = it.likedPhotoIdsMap.keys,
+                likedPhotosIds = it.likedPhotosResourceIdsMap.keys,
                 darkThemeConfig = when (it.darkThemeConfig) {
                     null,
                     DarkThemeConfigProto.DARK_THEME_CONFIG_UNSPECIFIED,
@@ -57,9 +57,9 @@ class SwPreferencesDataSource @Inject constructor(
             userPreferences.updateData {
                 it.copy {
                     if (liked) {
-                        likedPhotoIds.put(photoIds, true)
+                        likedPhotosResourceIds.put(photoIds, true)
                     } else {
-                        likedPhotoIds.remove(photoIds)
+                        likedPhotosResourceIds.remove(photoIds)
                     }
                 }
             }

@@ -26,15 +26,18 @@ class SwPagingSource(
         val page = params.key ?: STARTING_PAGE_INDEX
 
         return try {
+
             val response = if (query.isEmpty()) {
                 network.getPhotos(page, PAGE_SIZE)
             } else {
                 network.getPhotosByQuery(query, page, PAGE_SIZE)
             }
+
+
             LoadResult.Page(
-                data = response.toUiModel(),
+                data = response.photoList.map { it.toUiModel() },
                 prevKey = if (page == STARTING_PAGE_INDEX) null else page - 1,
-                nextKey = if (page >= response.totalPages) null else page + 1
+                nextKey = if (response.nextPage == null) null else page + 1
             )
         } catch (e: Exception) {
             LoadResult.Error(e)
