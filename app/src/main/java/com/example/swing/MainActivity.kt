@@ -24,7 +24,8 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.example.swing.MainActivityUiState.*
 import com.example.swing.core.data.util.NetworkMonitor
 import com.example.swing.core.model.DarkThemeConfig
-import com.example.swing.ui.theme.SwTheme
+import com.example.swing.ui.SwApp
+import com.example.swing.ui.core.theme.SwTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach

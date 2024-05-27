@@ -1,4 +1,4 @@
-package com.example.swing.ui.icon
+package com.example.swing.ui.core.icon
 
 import androidx.annotation.DrawableRes
 import androidx.compose.material.icons.Icons
@@ -8,7 +8,7 @@ import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Clear
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.swing.core.ui.R
-import com.example.swing.ui.icon.Icon.*
+import com.example.swing.ui.core.icon.Icon.*
 
 object SwIcons {
     val Settings = ImageVectorIcon(Icons.Outlined.Settings)

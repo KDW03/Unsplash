@@ -1,4 +1,4 @@
-package com.example.swing.ui.theme
+package com.example.swing.ui.core.theme
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf

@@ -1,4 +1,4 @@
-package com.example.swing.ui.theme
+package com.example.swing.ui.core.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
