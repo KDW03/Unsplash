@@ -9,7 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.swing.core.data.util.NetworkMonitor
-import com.example.swing.feature.facvorite.navigation.favoriteNavigationRoute
+import com.example.swing.feature.favorite.navigation.favoriteNavigationRoute
 import com.example.swing.feature.gallery.navigation.galleryNavigationRoute
 import com.example.swing.feature.navigation.navigateToSearch
 import com.example.swing.feature.settings.navigation.navigateToSettings
