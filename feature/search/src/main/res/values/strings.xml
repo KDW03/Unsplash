@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search">Search</string>
+    <string name="clear">Clear</string>
+    <string name="search_result_not_found">검색한 \"%1$s\"에 대한 내용을 찾을 수 없습니다.</string>
+    <string name="photos">Photos</string>
+    <string name="recent_searches">최근 검색</string>
+    <string name="load_search_result">검색 결과 로딩 중...</string>
+    <string name="clear_recent_searches_content_desc">Clear searches</string>
+    <string name="clear_search_text_content_desc">Clear search text</string>
+</resources>
