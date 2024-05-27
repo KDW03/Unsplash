@@ -29,3 +29,8 @@ include(":core:datastore")
 include(":core:database")
 include(":core:network")
 include(":core:common")
+
+include(":feature:gallery")
+include(":feature:favorite")
+include(":feature:settings")
+include(":feature:search")
