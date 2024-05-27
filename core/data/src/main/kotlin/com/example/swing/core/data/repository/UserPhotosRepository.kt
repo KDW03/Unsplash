@@ -4,7 +4,7 @@ import androidx.paging.PagingData
 import com.example.swing.core.model.Photo
 import kotlinx.coroutines.flow.Flow
 
-interface UserPhotosResourceRepository {
+interface UserPhotosRepository {
 
     fun getAllPhotos(): Flow<PagingData<Photo>>
 

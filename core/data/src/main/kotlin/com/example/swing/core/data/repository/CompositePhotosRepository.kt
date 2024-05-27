@@ -16,9 +16,9 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class CompositePhotosRepository @Inject constructor(
-    val photosRepository: PhotosResourceRepository,
+    val photosRepository: PhotosRepository,
     val userDataRepository: UserDataRepository,
-) : UserPhotosResourceRepository {
+) : UserPhotosRepository {
     override fun getAllPhotos(): Flow<PagingData<Photo>> =
         photosRepository.getPhotos().combine(
             userDataRepository.userData

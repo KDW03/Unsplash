@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.swing.core.data.repository.UserDataRepositoryImpl
-import com.example.swing.core.data.repository.UserPhotosResourceRepository
+import com.example.swing.core.data.repository.UserPhotosRepository
 import com.example.swing.core.model.Photo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GalleryViewModel @Inject constructor(
-    photosRepository: UserPhotosResourceRepository
+    photosRepository: UserPhotosRepository
 ) : ViewModel() {
 
     val photosFlow: Flow<PagingData<Photo>> =

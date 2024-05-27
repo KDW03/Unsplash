@@ -10,9 +10,9 @@ import com.example.swing.core.network.mapper.toUiModel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class PhotosResourceRepositoryImpl @Inject constructor(
+class PhotosRepositoryImpl @Inject constructor(
     private val swNetworkDataSource: SwNetworkDataSource,
-) : PhotosResourceRepository {
+) : PhotosRepository {
 
     override fun getPhotosByQuery(query: String): Flow<PagingData<Photo>> =
         Pager(
