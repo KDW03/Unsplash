@@ -45,19 +45,3 @@ data class Links(
     @JsonNames("download") val download: String,
     @JsonNames("download_location") val downloadLocation: String
 )
-
-fun UnsplashNetworkResponse.toUiModel(): List<Photo> {
-    return this.results.map { networkPhoto ->
-        Photo(
-            id = networkPhoto.id,
-            createdAt = networkPhoto.createdAt,
-            width = networkPhoto.width,
-            height = networkPhoto.height,
-            color = networkPhoto.color,
-            blurHash = networkPhoto.blurHash,
-            description = networkPhoto.description,
-            imageUrl = networkPhoto.urls.regular, // UI에서 주로 사용할 URL 선택
-            detailUrl = networkPhoto.links.html  // 상세 페이지로 연결되는 URL
-        )
-    }
-}

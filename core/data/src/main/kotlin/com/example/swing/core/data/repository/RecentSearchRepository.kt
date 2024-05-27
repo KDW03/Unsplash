@@ -10,4 +10,5 @@ interface RecentSearchRepository {
     suspend fun insertOrReplaceRecentSearch(searchQuery: String)
 
     suspend fun clearRecentSearches()
+
 }
