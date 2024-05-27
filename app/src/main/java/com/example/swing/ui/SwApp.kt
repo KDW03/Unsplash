@@ -32,7 +32,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
@@ -46,7 +45,7 @@ import com.example.swing.ui.core.icon.SwIcons
 import com.example.swing.feature.search.R as searchR
 import com.example.swing.feature.settings.R as settingsR
 
-@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun SwApp(
     networkMonitor: NetworkMonitor,
@@ -120,35 +119,38 @@ fun SwApp(
                     enter = fadeIn(tween(150)),
                     exit = fadeOut(tween(150))
                 ) {
-                    SwTopAppBar(
+                    Column(
                         modifier = Modifier
+                            .fillMaxSize()
                             .alpha(alpha)
-                            .align(Alignment.TopCenter),
-                        titleRes = destination.titleTextId,
-                        navigationIcon = SwIcons.Search.imageVector,
-                        navigationIconContentDescription = stringResource(
-                            id = searchR.string.search,
-                        ),
-                        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                            containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                        ),
-                        onNavigationClick = { appState.navigateToSearch() },
-                        actionIcon = SwIcons.Settings.imageVector,
-                        actionIconContentDescription = stringResource(
-                            id = settingsR.string.settings
-                        ),
-                        onActionClick = {
-                            appState.navigateToSetting()
-                        }
-                    )
+                    ) {
+                        SwTopAppBar(
+                            modifier = Modifier,
+                            titleRes = destination.titleTextId,
+                            navigationIcon = SwIcons.Search.imageVector,
+                            navigationIconContentDescription = stringResource(
+                                id = searchR.string.search,
+                            ),
+                            onNavigationClick = { appState.navigateToSearch() },
+                            actionIcon = SwIcons.Settings.imageVector,
+                            actionIconContentDescription = stringResource(
+                                id = settingsR.string.settings
+                            ),
+                            onActionClick = {
+                                appState.navigateToSetting()
+                            }
+                        )
+                        Spacer(modifier = Modifier.weight(1f))
+                        SwBottomBar(
+                            modifier = Modifier,
+                            destinations = appState.topLevelDestinations,
+                            onNavigateToDestination = appState::navigateToTopLevelDestination,
+                            currentDestination = appState.currentDestination,
+                        )
+                    }
                 }
             }
-
-
         }
-
     }
-
 }
-
 

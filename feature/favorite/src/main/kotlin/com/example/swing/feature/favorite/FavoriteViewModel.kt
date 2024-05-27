@@ -1,33 +1,32 @@
-package com.example.swing.feature.gallery
+package com.example.swing.feature.favorite
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
 import com.example.swing.core.data.repository.UserDataRepository
-import com.example.swing.core.data.repository.UserDataRepositoryImpl
 import com.example.swing.core.data.repository.UserPhotosRepository
 import com.example.swing.core.model.Photo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class GalleryViewModel @Inject constructor(
+class FavoriteViewModel @Inject constructor(
     private val userDataRepository: UserDataRepository,
     photosRepository: UserPhotosRepository
 ) : ViewModel() {
 
-    val photosFlow: Flow<PagingData<Photo>> =
-        photosRepository.getAllPhotos().cachedIn(viewModelScope).stateIn(
-            viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = PagingData.empty()
-        ).cachedIn(viewModelScope)
+    val favoritePhotoFlow: StateFlow<FavoriteUiState> = photosRepository.getAllLikePhotos().map {
+        FavoriteUiState.Success(it)
+    }.stateIn(
+        scope = viewModelScope,
+        initialValue = FavoriteUiState.Loading,
+        started = SharingStarted.WhileSubscribed(5_000)
+    )
 
     fun updatePhotoLiked(id: String, isLiked: Boolean) {
         viewModelScope.launch {

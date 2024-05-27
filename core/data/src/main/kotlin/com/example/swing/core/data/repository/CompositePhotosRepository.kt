@@ -33,7 +33,7 @@ class CompositePhotosRepository @Inject constructor(
         }
 
     override fun getPhotosByQuery(query: String): Flow<PagingData<Photo>> =
-        photosRepository.getPhotosByQuery(query).cachedIn(scope= scope).combine(
+        photosRepository.getPhotosByQuery(query).cachedIn(scope = scope).combine(
             userData
         ) { photos, userData ->
             photos.map { photo -> photo.copy(isLiked = photo.id in userData.likedPhotosIds) }
@@ -41,7 +41,6 @@ class CompositePhotosRepository @Inject constructor(
 
     override fun getAllLikePhotos(): Flow<List<Photo>> =
         userData.map { it.likedPhotosIds }
-            .distinctUntilChanged()
             .flatMapLatest { likedPhotosIds ->
                 if (likedPhotosIds.isEmpty()) {
                     flowOf(emptyList())
@@ -51,7 +50,7 @@ class CompositePhotosRepository @Inject constructor(
                             likedPhotosIds.map { id ->
                                 async {
                                     try {
-                                        photosRepository.getPhotoById(id)
+                                        photosRepository.getPhotoById(id).copy(isLiked = true)
                                     } catch (e: Exception) {
                                         null
                                     }

@@ -29,13 +29,13 @@ internal fun GalleryRoute(
     isScroll: MutableState<Boolean>
 ) {
 
-    val pagingFeeds = viewModel.photosFlow.collectAsLazyPagingItems()
+    val pagingPhotos = viewModel.photosFlow.collectAsLazyPagingItems()
     val orientation = LocalConfiguration.current.orientation
 
     GalleryScreen(
         modifier = modifier,
-        pagingFeeds = pagingFeeds,
-        onFeedClick = onPhotoClick,
+        pagingPhotos = pagingPhotos,
+        onPhotoClick = onPhotoClick,
         orientation = orientation,
         isScroll = isScroll,
         onLikeClick = viewModel::updatePhotoLiked
@@ -45,8 +45,8 @@ internal fun GalleryRoute(
 @Composable
 internal fun GalleryScreen(
     modifier: Modifier,
-    pagingFeeds: LazyPagingItems<Photo>,
-    onFeedClick: (String) -> Unit,
+    pagingPhotos: LazyPagingItems<Photo>,
+    onPhotoClick: (String) -> Unit,
     orientation: Int,
     isScroll: MutableState<Boolean>,
     onLikeClick: (String, Boolean) -> Unit,
@@ -67,16 +67,16 @@ internal fun GalleryScreen(
         LazyVerticalGrid(
             state = listState,
             columns = GridCells.Fixed(columns),
-            contentPadding = PaddingValues(top = 64.dp, start = 16.dp, end = 16.dp, bottom = 16.dp),
+            contentPadding = PaddingValues(top = 80.dp, start = 16.dp, end = 16.dp, bottom = 16.dp),
             modifier = Modifier
         ) {
             items(
-                pagingFeeds.itemCount
+                pagingPhotos.itemCount
             ) { index ->
-                pagingFeeds[index]?.let { photo ->
+                pagingPhotos[index]?.let { photo ->
                     PhotoItem(
                         photo = photo,
-                        onPhotoClick = onFeedClick,
+                        onPhotoClick = onPhotoClick,
                         screenWidthDp = screenWidthDp,
                         modifier = Modifier.padding(8.dp),
                         onLikeClick = onLikeClick

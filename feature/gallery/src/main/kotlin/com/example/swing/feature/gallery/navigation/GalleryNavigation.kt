@@ -16,7 +16,6 @@ fun NavController.navigateToGallery(navOptions: NavOptions? = null) {
 fun NavGraphBuilder.galleryScreen(
     onPhotoClick: (String) -> Unit,
     isScroll: MutableState<Boolean>,
-    nestedGraphs: () -> Unit
 ) {
     composable(
         route = galleryNavigationRoute
@@ -26,5 +25,4 @@ fun NavGraphBuilder.galleryScreen(
             isScroll = isScroll
         )
     }
-    nestedGraphs()
 }

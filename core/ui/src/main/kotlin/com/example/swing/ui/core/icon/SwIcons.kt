@@ -4,7 +4,9 @@ import androidx.annotation.DrawableRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.PhotoLibrary
 import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material.icons.outlined.PhotoLibrary
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.rounded.ArrowBack
@@ -15,6 +17,9 @@ import com.example.swing.ui.core.icon.Icon.*
 
 object SwIcons {
     val Settings = ImageVectorIcon(Icons.Outlined.Settings)
+
+    val Gallery = ImageVectorIcon(Icons.Outlined.PhotoLibrary)
+    val Favorite = ImageVectorIcon(Icons.Outlined.Favorite)
 
     val Search = ImageVectorIcon(Icons.Outlined.Search)
     val ArrowBack = ImageVectorIcon(Icons.Rounded.ArrowBack)
