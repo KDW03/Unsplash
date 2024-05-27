@@ -14,7 +14,7 @@ class PhotosResourceRepositoryImpl @Inject constructor(
     private val swNetworkDataSource: SwNetworkDataSource,
 ) : PhotosResourceRepository {
 
-    override fun getPhotosByQuery(query: String, page: Int, perPage: Int): Flow<PagingData<Photo>> =
+    override fun getPhotosByQuery(query: String): Flow<PagingData<Photo>> =
         Pager(
             config = PagingConfig(
                 pageSize = SwPagingSource.PAGE_SIZE
@@ -27,7 +27,7 @@ class PhotosResourceRepositoryImpl @Inject constructor(
             }
         ).flow
 
-    override fun getPhotos(page: Int, perPage: Int): Flow<PagingData<Photo>> =
+    override fun getPhotos(): Flow<PagingData<Photo>> =
         Pager(
             config = PagingConfig(
                 pageSize = SwPagingSource.PAGE_SIZE
