@@ -82,7 +82,7 @@ fun SwApp(
             Scaffold(
                 modifier = Modifier,
                 containerColor = Color.Transparent,
-                contentColor = Color.Transparent,
+                contentColor = MaterialTheme.colorScheme.onBackground,
                 contentWindowInsets = WindowInsets(0, 0, 0, 0),
                 snackbarHost = {
                     SnackbarHost(snackbarHostState) { data ->
