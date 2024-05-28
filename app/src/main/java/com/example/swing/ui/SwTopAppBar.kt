@@ -39,7 +39,7 @@ fun SwTopAppBar(
         modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 48.dp)
-            .height(64.dp)
+            .height(55.dp)
             .background(
                 color = MaterialTheme.colorScheme
                     .surfaceColorAtElevation(2.dp)

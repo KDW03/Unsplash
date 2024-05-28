@@ -8,4 +8,5 @@
     <string name="load_search_result">검색 결과 로딩 중...</string>
     <string name="clear_recent_searches_content_desc">Clear searches</string>
     <string name="clear_search_text_content_desc">Clear search text</string>
+    <string name="back">back</string>
 </resources>

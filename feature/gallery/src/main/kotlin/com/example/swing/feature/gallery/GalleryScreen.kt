@@ -20,6 +20,7 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.swing.core.model.Photo
 import com.example.swing.ui.core.componenet.PhotoItem
+import com.example.swing.ui.core.componenet.calculateColumns
 
 @Composable
 internal fun GalleryRoute(
@@ -67,7 +68,7 @@ internal fun GalleryScreen(
         LazyVerticalGrid(
             state = listState,
             columns = GridCells.Fixed(columns),
-            contentPadding = PaddingValues(top = 80.dp, start = 16.dp, end = 16.dp, bottom = 16.dp),
+            contentPadding = PaddingValues(top = 64.dp, start = 16.dp, end = 16.dp, bottom = 16.dp),
             modifier = Modifier
         ) {
             items(
@@ -88,8 +89,3 @@ internal fun GalleryScreen(
 }
 
 
-private fun calculateColumns(screenWidth: Int, orientation: Int): Int {
-    val baseColumnWidth = if (orientation == Configuration.ORIENTATION_LANDSCAPE) 200 else 150
-    val columns = (screenWidth / baseColumnWidth).coerceAtLeast(2)
-    return columns.coerceAtMost(6)
-}
