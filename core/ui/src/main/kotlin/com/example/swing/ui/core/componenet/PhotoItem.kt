@@ -31,7 +31,6 @@ import com.example.swing.ui.core.icon.SwIcons
 @Composable
 fun PhotoItem(
     modifier: Modifier = Modifier,
-    onPhotoClick: (String) -> Unit,
     onLikeClick: (String, Boolean) -> Unit,
     photo: Photo,
     screenWidthDp: Int
@@ -42,8 +41,7 @@ fun PhotoItem(
     Card(
         modifier = modifier
             .requiredHeight(cardHeight)
-            .fillMaxWidth()
-            .clickable { onPhotoClick(photo.id) },
+            .fillMaxWidth(),
         elevation = CardDefaults.cardElevation(8.dp),
         shape = RoundedCornerShape(16.dp)
     ) {

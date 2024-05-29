@@ -26,7 +26,6 @@ import com.example.swing.ui.core.componenet.calculateColumns
 internal fun GalleryRoute(
     modifier: Modifier = Modifier,
     viewModel: GalleryViewModel = hiltViewModel(),
-    onPhotoClick: (String) -> Unit,
     isScroll: MutableState<Boolean>
 ) {
 
@@ -36,7 +35,6 @@ internal fun GalleryRoute(
     GalleryScreen(
         modifier = modifier,
         pagingPhotos = pagingPhotos,
-        onPhotoClick = onPhotoClick,
         orientation = orientation,
         isScroll = isScroll,
         onLikeClick = viewModel::updatePhotoLiked
@@ -47,7 +45,6 @@ internal fun GalleryRoute(
 internal fun GalleryScreen(
     modifier: Modifier,
     pagingPhotos: LazyPagingItems<Photo>,
-    onPhotoClick: (String) -> Unit,
     orientation: Int,
     isScroll: MutableState<Boolean>,
     onLikeClick: (String, Boolean) -> Unit,
@@ -68,7 +65,7 @@ internal fun GalleryScreen(
         LazyVerticalGrid(
             state = listState,
             columns = GridCells.Fixed(columns),
-            contentPadding = PaddingValues(top = 64.dp, start = 16.dp, end = 16.dp, bottom = 16.dp),
+            contentPadding = PaddingValues(top = 80.dp, start = 16.dp, end = 16.dp, bottom = 16.dp),
             modifier = Modifier
         ) {
             items(
@@ -77,7 +74,6 @@ internal fun GalleryScreen(
                 pagingPhotos[index]?.let { photo ->
                     PhotoItem(
                         photo = photo,
-                        onPhotoClick = onPhotoClick,
                         screenWidthDp = screenWidthDp,
                         modifier = Modifier.padding(8.dp),
                         onLikeClick = onLikeClick

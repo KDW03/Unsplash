@@ -21,7 +21,6 @@ import com.example.swing.core.model.Photo
 fun PhotoList(
     modifier: Modifier,
     photos: List<Photo>,
-    onPhotoClick: (String) -> Unit,
     orientation: Int,
     isScroll: MutableState<Boolean>? = null,
     onLikeClick: (String, Boolean) -> Unit,
@@ -50,7 +49,6 @@ fun PhotoList(
             items(photos, key = { it.id }) { photo ->
                 PhotoItem(
                     photo = photo,
-                    onPhotoClick = onPhotoClick,
                     screenWidthDp = screenWidthDp,
                     modifier = Modifier.padding(8.dp),
                     onLikeClick = onLikeClick

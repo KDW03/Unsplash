@@ -15,12 +15,10 @@ fun NavController.navigateToSearch(navOptions: NavOptions? = null) {
 
 fun NavGraphBuilder.searchScreen(
     onBackClick: () -> Unit,
-    onPhotoClick: (String) -> Unit,
 ) {
     composable(route = searchRoute) {
         SearchRoute(
             onBackClick = onBackClick,
-            onPhotoClick = onPhotoClick,
         )
     }
 }

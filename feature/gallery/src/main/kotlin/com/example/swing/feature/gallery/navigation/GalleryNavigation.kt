@@ -14,14 +14,12 @@ fun NavController.navigateToGallery(navOptions: NavOptions? = null) {
 }
 
 fun NavGraphBuilder.galleryScreen(
-    onPhotoClick: (String) -> Unit,
     isScroll: MutableState<Boolean>,
 ) {
     composable(
         route = galleryNavigationRoute
     ) {
         GalleryRoute(
-            onPhotoClick = onPhotoClick,
             isScroll = isScroll
         )
     }

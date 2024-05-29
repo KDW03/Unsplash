@@ -5,10 +5,8 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import com.example.swing.feature.favorite.navigation.favoriteScreen
-import com.example.swing.feature.gallery.navigation.detailPhotoScreen
 import com.example.swing.feature.gallery.navigation.galleryNavigationRoute
 import com.example.swing.feature.gallery.navigation.galleryScreen
-import com.example.swing.feature.gallery.navigation.navigateToDetailPhoto
 import com.example.swing.feature.navigation.searchScreen
 import com.example.swing.feature.settings.navigation.settingsScreen
 import com.example.swing.ui.SwAppState
@@ -27,18 +25,15 @@ fun SwNavHost(
         modifier = modifier,
     ) {
         galleryScreen(
-            onPhotoClick = navController::navigateToDetailPhoto,
             isScroll = isScroll
         )
 
         favoriteScreen(
-            onPhotoClick = navController::navigateToDetailPhoto,
             isScroll = isScroll
         )
 
         searchScreen(
             onBackClick = navController::popBackStack,
-            onPhotoClick = navController::navigateToDetailPhoto,
         )
 
         settingsScreen()

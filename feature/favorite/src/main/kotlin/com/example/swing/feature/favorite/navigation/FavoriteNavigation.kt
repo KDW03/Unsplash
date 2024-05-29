@@ -15,14 +15,12 @@ fun NavController.navigateToFavorite(navOptions: NavOptions? = null) {
 }
 
 fun NavGraphBuilder.favoriteScreen(
-    onPhotoClick: (String) -> Unit,
     isScroll: MutableState<Boolean>,
 ) {
     composable(
         route = favoriteNavigationRoute
     ) {
         FavoriteRoute(
-            onPhotoClick = onPhotoClick,
             isScroll = isScroll
         )
     }

@@ -27,7 +27,6 @@ import com.example.swing.ui.core.componenet.calculateColumns
 internal fun FavoriteRoute(
     modifier: Modifier = Modifier,
     viewModel: FavoriteViewModel = hiltViewModel(),
-    onPhotoClick: (String) -> Unit,
     isScroll: MutableState<Boolean>
 ) {
 
@@ -37,7 +36,6 @@ internal fun FavoriteRoute(
     FavoriteScreen(
         modifier = modifier,
         favoriteUiState = favoritePhotos,
-        onPhotoClick = onPhotoClick,
         orientation = orientation,
         isScroll = isScroll,
         onLikeClick = viewModel::updatePhotoLiked
@@ -49,7 +47,6 @@ internal fun FavoriteRoute(
 internal fun FavoriteScreen(
     modifier: Modifier,
     favoriteUiState: FavoriteUiState,
-    onPhotoClick: (String) -> Unit,
     orientation: Int,
     isScroll: MutableState<Boolean>,
     onLikeClick: (String, Boolean) -> Unit,
@@ -65,7 +62,6 @@ internal fun FavoriteScreen(
             FavoriteContent(
                 modifier = modifier,
                 photos = favoriteUiState.photos,
-                onPhotoClick = onPhotoClick,
                 orientation = orientation,
                 isScroll = isScroll,
                 onLikeClick = onLikeClick
@@ -79,7 +75,6 @@ internal fun FavoriteScreen(
 fun FavoriteContent(
     modifier: Modifier,
     photos: List<Photo>,
-    onPhotoClick: (String) -> Unit,
     orientation: Int,
     isScroll: MutableState<Boolean>? = null,
     onLikeClick: (String, Boolean) -> Unit,
@@ -108,7 +103,6 @@ fun FavoriteContent(
             items(photos, key = { it.id }) { photo ->
                 PhotoItem(
                     photo = photo,
-                    onPhotoClick = onPhotoClick,
                     screenWidthDp = screenWidthDp,
                     modifier = Modifier.padding(8.dp),
                     onLikeClick = onLikeClick
