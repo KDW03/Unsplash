@@ -43,9 +43,9 @@ fun SwBottomBar(
                 color = MaterialTheme.colorScheme
                     .surfaceColorAtElevation(2.dp)
                     .copy(
-                        red = MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp).red * 0.95f,
-                        green = MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp).green * 0.95f,
-                        blue = MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp).blue * 0.95f
+                        red = MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp).red * 0.9f,
+                        green = MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp).green * 0.9f,
+                        blue = MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp).blue * 0.9f
                     ),
                 shape = RoundedCornerShape(percent = 100)
             ),
