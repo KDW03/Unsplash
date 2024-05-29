@@ -4,6 +4,7 @@ import android.content.Context
 import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.util.DebugLogger
+import com.example.swing.core.network.util.ApiKeyProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,15 +28,13 @@ object NetworkModule {
     }
 
 
-    // todo API_KEY
-    // todo Logging
     @Provides
     @Singleton
     fun okHttpCallFactory(): Call.Factory = OkHttpClient.Builder()
         .addInterceptor { chain: Interceptor.Chain ->
             val request = chain.request()
             val newRequest = request.newBuilder()
-                .header("Authorization", "Client-ID BzYTIQJ1j8aVtn7J2t-6SXgnKthRMsFDCS84EQt9hz4")
+                .header("Authorization", "Client-ID ${ApiKeyProvider.api_key}")
                 .build()
             chain.proceed(newRequest)
         }
