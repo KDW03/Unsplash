@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             content {
@@ -21,4 +22,15 @@ dependencyResolutionManagement {
 
 rootProject.name = "swing"
 include(":app")
- 
+include(":core:ui")
+include(":core:model")
+include(":core:data")
+include(":core:datastore")
+include(":core:database")
+include(":core:network")
+include(":core:common")
+
+include(":feature:gallery")
+include(":feature:favorite")
+include(":feature:settings")
+include(":feature:search")

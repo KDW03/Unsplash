@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="favorite">즐겨찾기</string>
+    <string name="favorite_loading">즐겨 찾기 로딩중…</string>
+</resources>
