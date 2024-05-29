@@ -36,6 +36,8 @@ fun SwNavHost(
             onBackClick = navController::popBackStack,
         )
 
-        settingsScreen()
+        settingsScreen(
+            onBackClick = navController::popBackStack
+        )
     }
 }
